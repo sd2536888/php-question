@@ -317,13 +317,76 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="php">PHP</h1>
-<h4 id="php-fpm&#x662F;&#x4EC0;&#x4E48;">php-fpm&#x662F;&#x4EC0;&#x4E48;</h4>
-<h4 id="php-fpm-&#x6709;&#x51E0;&#x79CD;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;-&#x5206;&#x522B;&#x9002;&#x7528;&#x4E8E;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#xFF1F;">php-fpm &#x6709;&#x51E0;&#x79CD;&#x8FD0;&#x884C;&#x65B9;&#x5F0F; &#x5206;&#x522B;&#x9002;&#x7528;&#x4E8E;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#xFF1F;</h4>
+<h3 id="&#x5206;&#x522B;&#x8BF4;&#x4E0B;cgiphp-cgifastcgiphp-fpm&#x662F;&#x4EC0;&#x4E48;">&#x5206;&#x522B;&#x8BF4;&#x4E0B;cgi,php-cgi,fastcgi,php-fpm&#x662F;&#x4EC0;&#x4E48;?</h3>
+<ul>
+<li>cgi&#x662F;&#x4E00;&#x4E2A;<strong>&#x534F;&#x8BAE;</strong>,&#x4FDD;&#x8BC1;web server&#x4F20;&#x9012;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x662F;&#x6807;&#x51C6;&#x683C;&#x5F0F;&#x7684;</li>
+<li>php-cgi&#x662F;<strong>PHP&#x7684;&#x89E3;&#x91CA;&#x5668;</strong>&#x3002;php-cgi&#x53EA;&#x662F;&#x4E2A;CGI&#x7A0B;&#x5E8F;&#xFF0C;&#x4ED6;&#x81EA;&#x5DF1;&#x672C;&#x8EAB;&#x53EA;&#x80FD;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x4E0D;&#x4F1A;&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;</li>
+<li>Fastcgi&#x662F;CGI&#x7684;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x662F;&#x7528;&#x6765;<strong>&#x63D0;&#x9AD8;CGI&#x7A0B;&#x5E8F;&#x6027;&#x80FD;</strong>&#x7684;</li>
+<li>php-fpm&#x662F;&#x8C03;&#x5EA6;php-cgi&#x8FDB;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;</li>
+</ul>
+<p>&#x62D3;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;<a href="http://www.lxlxw.me/?p=216" target="_blank">&#x8BF4;&#x8BF4;http/webserver/fastcgi/php-fpm</a></p>
+<p><a href="https://www.zhihu.com/question/30672017" target="_blank">&#x5982;&#x4F55;&#x901A;&#x4FD7;&#x5730;&#x89E3;&#x91CA; CGI&#x3001;FastCGI&#x3001;php-fpm &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF1F;</a></p>
+<p><a href="https://segmentfault.com/q/1010000000256516" target="_blank">&#x641E;&#x4E0D;&#x6E05;FastCgi&#x4E0E;PHP-fpm&#x4E4B;&#x95F4;&#x662F;&#x4E2A;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x5173;&#x7CFB;</a></p>
+<h3 id="php-fpm-&#x6709;&#x51E0;&#x79CD;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;-&#x5206;&#x522B;&#x9002;&#x7528;&#x4E8E;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#xFF1F;">php-fpm &#x6709;&#x51E0;&#x79CD;&#x8FD0;&#x884C;&#x65B9;&#x5F0F; &#x5206;&#x522B;&#x9002;&#x7528;&#x4E8E;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#xFF1F;</h3>
+<p>&#x8FD9;&#x4E2A;&#x662F; php-fpm.conf &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;<code>pm</code> &#x63A7;&#x5236;&#x9879;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x91C7;&#x7528;&#x4F55;&#x79CD;&#x65B9;&#x5F0F;&#x6765;<strong>&#x63A7;&#x5236;&#x5B50;&#x8FDB;&#x7A0B;&#x6570;&#x91CF;</strong>&#xFF0C;&#x4E3B;&#x8981;&#x6709;<strong>3&#x79CD;&#x65B9;&#x5F0F;</strong>&#xFF1A;</p>
+<ul>
+<li><strong>static:&#x9759;&#x6001;&#x6A21;&#x5F0F;</strong>,&#x56FA;&#x5B9A;&#x6709;n&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;,&#x9002;&#x7528;&#x4E8E;&#x5185;&#x5B58;&#x8F83;&#x5927;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;,&#x51CF;&#x5C11;&#x9891;&#x7E41;&#x589E;&#x52A0;/&#x51CF;&#x5C11;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x5F00;&#x9500;</li>
+<li><strong>dynamic:&#x52A8;&#x6001;&#x6A21;&#x5F0F;</strong>,&#x81F3;&#x5C11;&#x6709;1&#x4E2A;&#xFF0C;&#x542F;&#x52A8;<code>pm.start_servers</code>&#x4E2A;&#xFF0C;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x542F;&#x52A8;<code>pm.max_children</code>&#x4E2A;&#x3002;&#x5982;&#x679C;&#x5B50;&#x8FDB;&#x7A0B;&#x6709;&#x7A7A;&#x95F2;&#xFF0C;&#x4E14;&#x4E2A;&#x6570;&#x5C0F;&#x4E8E; <code>pm.min_spare_servers</code>&#xFF0C;&#x5219;&#x8865;&#x9F50;&#x5230;<code>pm.min_spare_servers</code>&#xFF0C;&#x5982;&#x679C;&#x5927;&#x4E8E; <code>pm.max_spare_servers</code>&#xFF0C;&#x5219;&#x964D;&#x4F4E;&#x5230; <code>pm.max_spare_servers</code>&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x5728;<strong>&#x6B63;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;</strong>&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x591A;</li>
+<li><strong>ondemand:&#x6309;&#x9700;&#x542F;&#x52A8;</strong>,&#x6CA1;&#x6709;&#x8BF7;&#x6C42;&#x65F6;&#x6CA1;&#x6709;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x6709;&#x8BF7;&#x6C42;&#x65F6;&#x542F;&#x52A8;&#x3002;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x542F;&#x52A8;<code>pm.max_children</code>&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x7A7A;&#x95F2;&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x7ECF;&#x8FC7;<code>pm.process_idle_timeout</code> &#x540E;&#x4F1A;&#x88AB;&#x6740;&#x6389;&#xFF0C;&#x6700;&#x7EC8;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5B50;&#x8FDB;&#x7A0B;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;<strong>&#x4F7F;&#x7528;&#x6700;&#x5C11;</strong>&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x8282;&#x7701;&#x670D;&#x52A1;&#x5668;&#x8D44;&#x6E90;&#xFF0C;&#x7A7A;&#x95F2;&#x540E;&#x9996;&#x6B21;&#x542F;&#x52A8;&#xFF0C;&#x54CD;&#x5E94;&#x8F83;&#x6162;&#x3002;</li>
+</ul>
+<p>&#x62D3;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;<a href="http://www.jishuchi.com/read/php-interview/2712" target="_blank">PHP php-fpm &#x6709;&#x54EA;&#x4E9B;&#x5B50;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;&#xFF1F;</a></p>
+<p><a href="https://blog.csdn.net/njrclj/article/details/85062459" target="_blank">PHP-FPM&#x53CA;&#x5176;&#x4E09;&#x79CD;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;
+</a></p>
 <h4 id="&#x5DF2;&#x77E5;nginx&#x548C;php-fpm&#x5B89;&#x88C5;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;nginx&#x8FDE;&#x63A5;php-fpm&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x4E00;&#x79CD;&#x662F;&#x7C7B;&#x4F3C;1270019000&#x7684;tcp-socket&#xFF1B;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x7C7B;&#x4F3C;tmpphp-fpmsock&#x7684;unix-domain-socket&#x3002;&#x8BF7;&#x95EE;&#x5982;&#x4F55;&#x9009;&#x62E9;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4EC0;&#x4E48;&#x3002;">&#x5DF2;&#x77E5;Nginx&#x548C;PHP-FPM&#x5B89;&#x88C5;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;Nginx&#x8FDE;&#x63A5;PHP-FPM&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x4E00;&#x79CD;&#x662F;&#x7C7B;&#x4F3C;127.0.0.1:9000&#x7684;TCP socket&#xFF1B;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x7C7B;&#x4F3C;/tmp/php-fpm.sock&#x7684;Unix domain socket&#x3002;&#x8BF7;&#x95EE;&#x5982;&#x4F55;&#x9009;&#x62E9;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4EC0;&#x4E48;&#x3002;</h4>
 <p>Unix domain socket&#x7684;&#x6D41;&#x7A0B;&#x4E0D;&#x4F1A;&#x8D70;&#x5230;TCP &#x90A3;&#x5C42;&#xFF0C;&#x76F4;&#x63A5;&#x4EE5;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;&#xFF0C;&#x4EE5;stream socket&#x901A;&#x8BAF;&#x3002;&#x5982;&#x679C;&#x662F;TCP socket,&#x5219;&#x9700;&#x8981;&#x8D70;&#x5230;IP&#x5C42;&#x3002;&#x8BF4;&#x7684;&#x901A;&#x4FD7;&#x4E00;&#x70B9;&#xFF0C;&#x8FFD;&#x6C42;&#x53EF;&#x9760;&#x6027;&#x5C31;&#x662F;tcp&#xFF08;&#x9700;&#x8981;&#x5360;&#x7528;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#xFF0C;&#x66F4;&#x7A33;&#xFF09;&#xFF0C;&#x8FFD;&#x6C42;&#x9AD8;&#x6027;&#x80FD;&#x5C31;&#x662F;Unix Socket&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x5360;&#x7528;&#x7AEF;&#x53E3;&#xFF0C;&#x66F4;&#x5FEB;&#xFF09;</p>
 <p>&#x62D3;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;<a href="https://www.cnxct.com/default-configuration-and-performance-of-nginx-phpfpm-and-tcp-socket-or-unix-domain-socket//" target="_blank">nginx&#x3001;php-fpm&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x4E0E;&#x6027;&#x80FD;&#x2013;TCP socket&#x8FD8;&#x662F;unix domain socket</a></p>
 <h4 id="&#x624B;&#x52A8;&#x7528;php&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;">&#x624B;&#x52A8;&#x7528;php&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;</h4>
-<h4 id="php5&#x548C;7&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x54EA;&#x4E9B;&#x7279;&#x6027;&#x53C8;&#x53BB;&#x9664;&#x4E86;&#x54EA;&#x4E9B;&#xFF1F;">php5&#x548C;7&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x54EA;&#x4E9B;&#x7279;&#x6027;&#x53C8;&#x53BB;&#x9664;&#x4E86;&#x54EA;&#x4E9B;&#xFF1F;</h4>
+<pre><code>&lt;?php
+
+class Singleton {
+    // &#x79C1;&#x6709;&#x5316;&#x6784;&#x9020;&#x65B9;&#x6CD5;
+    private function __construct()
+    {
+
+    }
+
+    // &#x79C1;&#x6709;&#x5316;clone&#x65B9;&#x6CD5;
+    private function __clone()
+    {
+
+    }
+
+
+    // &#x4FDD;&#x5B58;&#x5B9E;&#x4F8B;&#x7684;&#x9759;&#x6001;&#x5BF9;&#x8C61;
+    public static $singleInstance;
+
+    /**
+     * &#x58F0;&#x660E;&#x9759;&#x6001;&#x8C03;&#x7528;&#x65B9;&#x6CD5;
+     * &#x76EE;&#x7684;&#xFF1A;&#x4FDD;&#x8BC1;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x5168;&#x5C40;&#x552F;&#x4E00;
+     */
+    public static function getInstance()
+    {
+        if (!self::$singleInstance) {
+            self::$singleInstance = new self();
+        }
+
+        return self::$singleInstance;
+    }
+}
+</code></pre><h4 id="php5&#x548C;php7&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x54EA;&#x4E9B;&#x7279;&#x6027;&#x53C8;&#x53BB;&#x9664;&#x4E86;&#x54EA;&#x4E9B;&#xFF1F;">php5&#x548C;php7&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x54EA;&#x4E9B;&#x7279;&#x6027;&#x53C8;&#x53BB;&#x9664;&#x4E86;&#x54EA;&#x4E9B;&#xFF1F;</h4>
+<p>&#x4E3B;&#x8981;&#x533A;&#x522B;:</p>
+<ul>
+<li>&#x6027;&#x80FD;:&#x6BD4;5.6&#x63D0;&#x5347;2&#x500D;</li>
+<li>&#x5168;&#x9762;&#x652F;&#x6301;64&#x4F4D;</li>
+<li>PHP7.0&#x4E4B;&#x524D;&#x51FA;&#x73B0;&#x7684;&#x81F4;&#x547D;&#x9519;&#x8BEF;&#xFF0C;&#x90FD;&#x6539;&#x6210;&#x4E86;&#x629B;&#x51FA;&#x5F02;&#x5E38;</li>
+<li>&#x65B0;&#x589E;&#x4E86;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x58F0;&#x660E;</li>
+<li>&#x65B0;&#x589E;&#x4E86;&#x533F;&#x540D;&#x7C7B;</li>
+<li>&#x65B0;&#x589E;&#x4E86;&#x65B0;&#x7684;&#x8FD0;&#x7B97;&#x7B26;<code>&lt;=&gt;</code>&#x88AB;&#x79F0;&#x4E3A;&#x201C;&#x592A;&#x7A7A;&#x98DE;&#x8239;&#x8FD0;&#x7B97;&#x7B26;&#x201D;</li>
+<li>&#x79FB;&#x9664;&#x4E86;&#x4E00;&#x4E9B;&#x6269;&#x5C55;,&#x6BD4;&#x5982;mysql,mssql</li>
+<li>&#x79FB;&#x9664;&#x4E86;&#x4E00;&#x4E9B;sapi,&#x6BD4;&#x5982;apache,isapi</li>
+</ul>
+<p>&#x6269;&#x5C55;&#x9605;&#x8BFB;:<a href="https://www.freelancinggig.com/blog/2018/04/23/major-differences-php-5-php-7/" target="_blank">WHAT ARE THE MAJOR DIFFERENCES BETWEEN PHP 5 AND PHP 7?</a></p>
+<p><a href="https://segmentfault.com/a/1190000012507565" target="_blank">PHP 7 &#x4FEE;&#x6539;&#x4E86;&#x4EC0;&#x4E48;&#x5462;</a></p>
 <h4 id="&#x9759;&#x6001;&#x5EF6;&#x8FDF;&#x7ED1;&#x5B9A;&#x662F;&#x4EC0;&#x4E48;">&#x9759;&#x6001;&#x5EF6;&#x8FDF;&#x7ED1;&#x5B9A;&#x662F;&#x4EC0;&#x4E48;?</h4>
 <h4 id="&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x539F;&#x7406;">&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x539F;&#x7406;</h4>
 <h4 id="php5&#x548C;php7&#x7684;gc&#x533A;&#x522B;">php5&#x548C;php7&#x7684;gc&#x533A;&#x522B;</h4>
@@ -375,7 +438,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.2","depth":1,"next":{"title":"MySQL","level":"1.3","depth":1,"path":"mysql/README.md","ref":"mysql/README.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"php/README.md","mtime":"2020-01-16T08:33:42.108Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-16T08:34:58.999Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.2","depth":1,"next":{"title":"MySQL","level":"1.3","depth":1,"path":"mysql/README.md","ref":"mysql/README.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"php/README.md","mtime":"2020-01-17T12:08:08.856Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-17T12:09:50.520Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
